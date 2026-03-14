@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio | Creative Developer</title>
+    <meta name="description" content="Portfolio showcasing premium web designs and interactive experiences." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+    <div id="app">
+        <nav id="navbar" class="glass">
+            <div class="logo">PORTFOLIO.</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="hero" class="hero-section">
+                <div class="hero-content">
+                    <h1 class="reveal-text">Designing <span class="gradient-text">Experiences</span></h1>
+                    <p class="hero-subtitle">Premium Web Developer & UI/UX Specialist</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">Check my work</a>
+                        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glow-sphere"></div>
+                </div>
+            </section>
+
+            <section id="about" class="section reveal">
+                <div class="about-container">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="about-content glass">
+                        <p>I'm a passionate developer dedicated to crafting immersive digital experiences. With a focus
+                            on modern aesthetics and high-performance code, I bridge the gap between design and
+                            functionality.</p>
+                        <div class="skills-tags">
+                            <span>React</span><span>TypeScript</span><span>Node.js</span><span>Three.js</span><span>UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section reveal">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-card glass">
+                    <form id="contact-form">
+                        <input type="text" placeholder="Name" required class="glass-input">
+                        <input type="email" placeholder="Email" required class="glass-input">
+                        <textarea placeholder="Message" rows="5" required class="glass-input"></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="glass reveal">
+            <p>&copy; 2026 Portfolio. All rights reserved.</p>
+        </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
