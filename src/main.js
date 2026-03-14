@@ -39,6 +39,57 @@ const renderProjects = () => {
   `).join('');
 };
 
+// Typewriter Effect for About Section
+const initTypewriter = () => {
+  const aboutTextElement = document.getElementById('about-text');
+  const skillsElement = document.getElementById('about-skills');
+  if (!aboutTextElement) return;
+
+  const textToType = aboutTextElement.getAttribute('data-text');
+  aboutTextElement.innerHTML = ''; // clear it initially
+  
+  let i = 0;
+  let isTyping = false;
+  
+  const typeWriter = () => {
+    if (i < textToType.length) {
+      aboutTextElement.innerHTML += textToType.charAt(i);
+      i++;
+      setTimeout(typeWriter, 15); // Adjust typing speed here (ms)
+    } else {
+      if(skillsElement) {
+        skillsElement.style.transition = 'opacity 0.5s ease';
+        skillsElement.style.opacity = 1;
+        const tags = skillsElement.querySelectorAll('span');
+        tags.forEach((tag, index) => {
+          tag.style.opacity = 0;
+          tag.style.transform = 'translateY(10px)';
+          tag.style.transition = `all 0.4s ease ${index * 0.15}s`;
+          setTimeout(() => {
+            tag.style.opacity = 1;
+            tag.style.transform = 'translateY(0)';
+          }, 50);
+        });
+      }
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !isTyping) {
+        isTyping = true;
+        // Small delay before starting to type
+        setTimeout(typeWriter, 300); 
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 }); // Start when 50% of the section is visible
+
+  if (document.getElementById('about')) {
+    observer.observe(document.getElementById('about'));
+  }
+};
+
 // Intersection Observer for Reveal Animations
 const initReveal = () => {
   const observerOptions = {
@@ -62,4 +113,5 @@ const initReveal = () => {
 document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
   initReveal();
+  initTypewriter();
 });
