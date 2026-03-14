@@ -275,6 +275,10 @@ h1 {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .section {
+        padding: 60px 5%;
+    }
+
     .hero-section {
         flex-direction: column;
         justify-content: center;
@@ -285,10 +289,32 @@ h1 {
     .hero-visual {
         width: 250px;
         height: 250px;
+        margin-top: 2rem;
     }
 
     .nav-links {
         display: none;
         /* Add mobile menu later if needed */
+    }
+
+    .about-content {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .skills-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .skills-tags span {
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        font-size: 0.85rem;
     }
 }
