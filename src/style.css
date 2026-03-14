@@ -37,18 +37,18 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
-    pointer-events: none; /* Let clicks pass through to the app by default */
+    z-index: -1;
+    pointer-events: none;
 }
 
-/* Ensure particles interactivity works if we enable click/hover modes */
 #tsparticles canvas {
-    pointer-events: auto;
+    display: block;
 }
 
 #app {
     position: relative;
     z-index: 1;
+    background: transparent;
 }
 
 /* Glassmorphism Utilities */
