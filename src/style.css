@@ -26,22 +26,6 @@ body {
     line-height: 1.6;
 }
 
-/* Global Text Hover Effect */
-h1:not(.gradient-text):hover,
-h2:hover,
-h3:hover,
-p:hover,
-.logo:hover,
-span:not(.gradient-text):not(.btn):hover,
-a:not(.btn):hover {
-    color: var(--bg);
-    background-color: var(--text);
-    transition: all 0.3s ease;
-    border-radius: 4px;
-    padding: 0 4px;
-    margin: 0 -4px;
-}
-
 /* Glassmorphism Utilities */
 .glass {
     background: var(--glass-bg);
@@ -133,10 +117,7 @@ h1 {
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -144,28 +125,14 @@ h1 {
     color: white;
 }
 
-.btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: white;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
 .btn-primary:hover {
+    background-image: 
+        linear-gradient(45deg, var(--primary), var(--secondary)),
+        linear-gradient(#ffffff, #ffffff);
+    background-clip: text, padding-box;
+    -webkit-background-clip: text, padding-box;
+    -webkit-text-fill-color: transparent;
     color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-image: linear-gradient(45deg, var(--primary), var(--secondary));
-}
-
-.btn-primary:hover::before {
-    opacity: 1;
 }
 
 .btn-secondary {
