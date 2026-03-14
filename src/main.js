@@ -26,7 +26,7 @@ const renderProjects = () => {
   if (!grid) return;
 
   grid.innerHTML = projects.map(project => `
-    <div class="project-card glass reveal">
+    <div class="project-card glass reveal" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
       <div class="project-image" style="background-image: url('${project.image}')"></div>
       <div class="project-info">
         <h3>${project.title}</h3>
@@ -37,6 +37,11 @@ const renderProjects = () => {
       </div>
     </div>
   `).join('');
+  
+  // Initialize VanillaTilt if available
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll(".project-card"));
+  }
 };
 
 // Typewriter Effect for About Section
@@ -115,9 +120,35 @@ const initReveal = () => {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 };
 
+// ScrollSpy Navigation
+const initScrollSpy = () => {
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+};
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
   initReveal();
   initTypewriter();
+  initScrollSpy();
 });
