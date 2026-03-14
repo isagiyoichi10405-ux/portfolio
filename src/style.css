@@ -202,21 +202,52 @@ h1 {
     }
 }
 
-/* Layout */
-.section {
-    padding: 100px 10%;
+/* Contact Section */
+.contact-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem;
 }
 
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+.glass-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--secondary);
+    box-shadow: 0 0 15px rgba(64, 93, 230, 0.2);
+}
+
+textarea.glass-input {
+    resize: vertical;
+    min-height: 150px;
+}
+
+#contact-form .btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+    cursor: pointer;
+    border: none;
 }
 
 /* Project Cards */
