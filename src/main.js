@@ -83,7 +83,7 @@ const initTypewriter = () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 }); // Start when 50% of the section is visible
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }); // Start when 10% of the section is visible
 
   if (document.getElementById('about')) {
     observer.observe(document.getElementById('about'));
