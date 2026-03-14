@@ -74,20 +74,26 @@ const initTypewriter = () => {
     }
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !isTyping) {
+  const handleScroll = () => {
+    if (isTyping) return;
+    
+    // Fallback: use getBoundingClientRect for reliable trigger on mobile
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      const rect = aboutSection.getBoundingClientRect();
+      const inView = (rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.9);
+      
+      if (inView && !isTyping) {
         isTyping = true;
-        // Small delay before starting to type
-        setTimeout(typeWriter, 300); 
-        observer.unobserve(entry.target);
+        setTimeout(typeWriter, 300);
+        window.removeEventListener('scroll', handleScroll);
       }
-    });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }); // Start when 10% of the section is visible
+    }
+  };
 
-  if (document.getElementById('about')) {
-    observer.observe(document.getElementById('about'));
-  }
+  window.addEventListener('scroll', handleScroll);
+  // Check once immediately on load just in case it's already in view
+  setTimeout(handleScroll, 500);
 };
 
 // Intersection Observer for Reveal Animations
